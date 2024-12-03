@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Include Chart.js -->
+</head>
+<body>
+    <div class="background-video">
+        <video autoplay muted loop id="clouds-video">
+            <source src="clouds.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div class="container">
+        <h1 class="title">Weather Forecast</h1>
+        <div class="search-bar">
+            <input type="text" id="city-input" placeholder="Enter city name">
+            <button onclick="getWeather()">Get Weather</button>
+        </div>
+
+        <div class="tabs">
+            <button class="tablinks" onclick="openTab(event, 'tempChartTab')">Temperature</button>
+            <button class="tablinks" onclick="openTab(event, 'humidityChartTab')">Humidity</button>
+            <button class="tablinks" onclick="openTab(event, 'precipitationChartTab')">Precipitation</button>
+            <button class="tablinks" onclick="openTab(event, 'windSpeedChartTab')">Wind Speed</button>
+        </div>
+
+        <div id="weather-details" style="visibility: hidden;">
+            <div class="current-weather">
+                <h2 id="city-name"></h2>
+                <img id="weather-icon" alt="Weather icon">
+                <p id="description"></p>
+                <div class="temp-info">
+                    <p>Temperature: <span id="temp"></span>°C</p>
+                    <p>Max: <span id="temp-max"></span>°C</p>
+                    <p>Min: <span id="temp-min"></span>°C</p>
+                    <p>Wind Speed: <span id="wind-speed"></span> m/s</p>
+                    <p>Humidity: <span id="humidity"></span>%</p>
+                    <p>Precipitation: <span id="precipitation"></span> mm</p>
+                </div>
+            </div>
+        <div class="forecast">
+            <h3>5-Day Forecast</h3>
+            <div class="forecast-container" id="forecast-container"></div>
+        </div>
+        
+        <div class="charts-section">
+            <h3>Weather Trends for the Next 5 Days</h3>
+            <div class="tabs">
+                <button class="tablinks active" onclick="openTab(event, 'tempChartTab')">Temperature</button>
+                <button class="tablinks" onclick="openTab(event, 'humidityChartTab')">Humidity</button>
+                <button class="tablinks" onclick="openTab(event, 'precipitationChartTab')">Precipitation</button>
+                <button class="tablinks" onclick="openTab(event, 'windSpeedChartTab')">Wind Speed</button>
+            </div>
+
+            <div id="tempChartTab" class="tabcontent">
+                <canvas id="tempChart"></canvas>
+            </div>
+            <div id="humidityChartTab" class="tabcontent">
+                <canvas id="humidityChart"></canvas>
+            </div>
+            <div id="precipitationChartTab" class="tabcontent">
+                <canvas id="precipitationChart"></canvas>
+            </div>
+            <div id="windSpeedChartTab" class="tabcontent">
+                <canvas id="windSpeedChart"></canvas>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
